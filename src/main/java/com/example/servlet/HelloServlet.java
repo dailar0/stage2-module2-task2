@@ -7,12 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/logout")
-public class LogoutServlet extends HttpServlet {
+@WebServlet("/user/hello")
+public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().removeAttribute("user");
-        req.getSession().invalidate();
-        resp.sendRedirect(req.getContextPath() + "/login");
+        req.getRequestDispatcher("/user/hello.jsp").forward(req, resp);
     }
 }
